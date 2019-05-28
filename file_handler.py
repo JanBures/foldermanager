@@ -2,18 +2,26 @@ import os
 
 class FileHandler:
 
-
     def __init__(self):
         current_working_directory = os.getcwd()
         subdirectory = "\Folders"
-        destination_folder = current_working_directory + subdirectory
-
+        self.destination_folder = current_working_directory + subdirectory
         try:
-            os.mkdir(destination_folder)
+            os.mkdir(self.destination_folder)
         except FileExistsError:
-            print("Složka", destination_folder ,"existuje!")
+            print("Folder", self.destination_folder ,"already exists!")
 
-    def make_dirs(self, startno, amount):
+    def get_dirs_names(self):
+        #todo
+        pass
+
+    def make_dirs(self):
+        #todo
+        pass
+
+
+    # break this function apart
+    def mkdirs(self, startno, amount):
         self.startno = startno
         self.amount = amount
         self.counter = startno
@@ -37,4 +45,9 @@ class FileHandler:
             self.counter += 1   # increment
 
             print(self.new_folder_name)
-
+            self.final_path = "".join([self.destination_folder,"\\",self.new_folder_name])  # concatenate path
+            print(self.final_path)
+            try:
+                os.mkdir(self.final_path)
+            except FileExistsError:
+                pass

@@ -4,4 +4,4 @@ debug = 0
 
 fh = FileHandler()
 
-fh.make_dirs(500,50)
+fh.mkdirs(500, 25)
