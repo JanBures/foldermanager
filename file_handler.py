@@ -57,10 +57,9 @@ class FileHandler:
 
     def make_dirs(self, startno, amount):
         """
-        method creating directories
-        :param startno:
-        :param amount:
-        :return:
+        method creating defined directories
+        :param startno: lowest number, also starting number of first directory
+        :param amount: amount on directories to be made
         """
         self.make_subdir()  # create base subfolder
         dirs = self.get_dirs_names(startno, amount) # get all new dir names into a list
