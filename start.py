@@ -1,7 +1,7 @@
-from file_handler import *
+import file_handler
 
 debug = 0
 
-fh = FileHandler()
-fh.set_dir("fl")
-fh.make_dirs(1, 10)
+fh = file_handler.FileHandler()
+fh.set_subdir("Vzorování")
+fh.make_dirs(1, 100)

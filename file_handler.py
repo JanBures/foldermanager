@@ -1,17 +1,25 @@
+"""
+    Class producing sequences of empty folders numbered
+    mainly from 000000 to 999999.
+Methods:
+    - filehandler.setsubdir changes main subdir whitch contains newly made folders
+    - filehandler.makedirs initiate making of directories
+    """
+
 import os
 
 class FileHandler:
 
     def __init__(self):
-        self.current_working_directory = os.getcwd()
-        self.subdirectory = "\Folders"
-        self.destination_folder = self.get_working_dir() + self.subdirectory
-        try:
-            os.mkdir(self.destination_folder)
-        except FileExistsError:
-            print("Folder", self.destination_folder ,"already exists!")
+        self.subdirectory = "dirs"
 
     def get_dirs_names(self, startno, amount):
+        """
+        Produces list of names of folders to be created
+        :param startno: start number of first directory
+        :param amount: amount of folders to be created
+        :return: list with names of directories
+        """
         self.startno = startno if startno else 1
         self.amount = amount if amount else 10
         self.counter = startno if startno else 1
@@ -33,24 +41,43 @@ class FileHandler:
             else:
                 self.new_folder_name = str(self.counter)
             self.counter += 1  # increment
-            self.final_path = "".join([self.get_working_dir(), "\\", self.new_folder_name]) # concatenate path
-
-            self.names.append(self.final_path)
+            self.final_path = str(self.get_working_dir()) +"\\"+ self.get_subdir() +"\\"+ str(self.new_folder_name)
+            self.names.append(self.final_path)  # add one by one directory name into the list
         return self.names
+
+    def make_subdir(self):
+        """
+        internal function creating base subdirectories
+        """
+        try:
+            os.mkdir(self.subdirectory) # create defined subdirectory
+        except FileExistsError:         # raised when directory exists
+            print("Folder", self.subdirectory ,"already exists!")
 
 
     def make_dirs(self, startno, amount):
-        dirs = self.get_dirs_names(startno, amount)
+        """
+        method creating directories
+        :param startno:
+        :param amount:
+        :return:
+        """
+        self.make_subdir()  # create base subfolder
+        dirs = self.get_dirs_names(startno, amount) # get all new dir names into a list
         for d in dirs:
             print(d)
             try:
-                os.mkdir(d)
+                os.mkdir(d) # make final dirs
             except FileExistsError:
-                print("folder" , d , "exists!")
+                print("Directory" , d , "exists!")
 
     def get_working_dir(self):
         current_working_directory = os.getcwd()
         return current_working_directory
 
-    def set_dir(self, param):
+    def get_subdir(self):
+        return self.subdirectory
+
+    def set_subdir(self, param):
         self.subdirectory = param
+
