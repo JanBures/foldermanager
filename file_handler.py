@@ -72,12 +72,25 @@ class FileHandler:
                 print("Directory" , d , "exists!")
 
     def get_working_dir(self):
+        """
+        internal getter of working directory (location of script)
+        :return: string path to root working directory
+        """
         current_working_directory = os.getcwd()
         return current_working_directory
 
     def get_subdir(self):
+        """
+        internal getter of subdirectory name
+        :return:
+        """
         return self.subdirectory
 
     def set_subdir(self, param):
+        """
+        setter of subdirectory name
+        :param param: string name of main subdirectory
+        :return:
+        """
         self.subdirectory = param
 
