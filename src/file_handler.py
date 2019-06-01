@@ -8,6 +8,7 @@ Methods:
 
 import os
 
+
 class FileHandler:
 
     def __init__(self):
@@ -41,8 +42,10 @@ class FileHandler:
             else:
                 self.new_folder_name = str(self.counter)
             self.counter += 1  # increment
-            self.final_path = str(self.get_working_dir()) +"\\"+ self.get_subdir() +"\\"+ str(self.new_folder_name)
+            self.final_path = os.path.join(self.get_working_dir(), self.get_subdir(), self.new_folder_name)
+            #self.final_path = str(self.get_working_dir()) +"/"+ self.get_subdir() +"/"+ str(self.new_folder_name)
             self.names.append(self.final_path)  # add one by one directory name into the list
+
         return self.names
 
     def make_subdir(self):
