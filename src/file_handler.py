@@ -1,6 +1,6 @@
 """
-    Class producing sequences of empty folders numbered
-    mainly from 000000 to 999999.
+    Class producing sequences of empty folders named with at least six digits numbered
+    from 000000 to 999999.
 Methods:
     - filehandler.setsubdir changes main subdir whitch contains newly made folders
     - filehandler.makedirs initiate making of directories
